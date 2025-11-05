@@ -47,7 +47,7 @@ export async function deleteBooking(booking_id) {
   return true;
 }
 
-// ✅ Toggle booking done status (PATCH with query param)
+// ✅ Toggle booking done status
 export async function toggleBookingDone(booking_id, done) {
   const res = await fetch(
     `${API_BASE}/api/bookings/${booking_id}/done?done=${done}`,
