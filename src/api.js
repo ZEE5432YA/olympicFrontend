@@ -1,9 +1,9 @@
-// ✅ Automatically detect backend API base URL
+// ✅ Detect backend API base URL automatically
 const API_BASE =
   import.meta.env.VITE_API_BASE_URL ||
   (window.location.hostname === "localhost"
-    ? "http://127.0.0.1:8000" // Local FastAPI backend
-    : "https://your-backend-name.vercel.app"); // 🔹 Replace with your actual backend URL
+    ? "http://127.0.0.1:8000" // local FastAPI backend
+    : "https://your-backend-name.vercel.app"); // 🔹 replace with your actual deployed backend URL
 
 console.log("🌍 Using API Base:", API_BASE);
 
@@ -25,7 +25,7 @@ export async function getBookings() {
   return res.json();
 }
 
-// ✅ Check availability (this fixes the build error)
+// ✅ Check availability
 export async function checkAvailability(date, start_min, end_min) {
   const params = new URLSearchParams({
     date,
@@ -47,7 +47,7 @@ export async function deleteBooking(booking_id) {
   return true;
 }
 
-// ✅ Toggle booking done status
+// ✅ Toggle booking done status (PATCH with query param)
 export async function toggleBookingDone(booking_id, done) {
   const res = await fetch(
     `${API_BASE}/api/bookings/${booking_id}/done?done=${done}`,
