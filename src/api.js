@@ -2,8 +2,8 @@
 const API_BASE =
   import.meta.env.VITE_API_BASE_URL ||
   (window.location.hostname === "localhost"
-    ? "http://127.0.0.1:8000" // local FastAPI backend
-    : "https://your-backend-name.vercel.app"); // 🔹 replace with your actual deployed backend URL
+    ? "http://127.0.0.1:8000" // Local FastAPI backend
+    : "https://olympic-booking-backend-f2j5.vercel.app"); // ✅ Your deployed backend URL
 
 console.log("🌍 Using API Base:", API_BASE);
 
