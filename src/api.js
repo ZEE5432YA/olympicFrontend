@@ -2,8 +2,8 @@
 const API_BASE =
   import.meta.env.VITE_API_BASE_URL ||
   (window.location.hostname === "localhost"
-    ? "http://127.0.0.1:8000" // Local FastAPI
-    : "https://your-backend-name.vercel.app"); // 🔹 Replace with your actual deployed backend URL
+    ? "http://127.0.0.1:8000" // Local FastAPI backend
+    : "https://your-backend-name.vercel.app"); // 🔹 Replace with your actual backend URL
 
 console.log("🌍 Using API Base:", API_BASE);
 
@@ -25,13 +25,14 @@ export async function getBookings() {
   return res.json();
 }
 
-// ✅ Check availability (added back to prevent build errors)
+// ✅ Check availability (this fixes the build error)
 export async function checkAvailability(date, start_min, end_min) {
   const params = new URLSearchParams({
     date,
     start_time: String(start_min),
     end_time: String(end_min),
   });
+
   const res = await fetch(`${API_BASE}/api/availability?${params.toString()}`);
   if (!res.ok) throw new Error(await res.text());
   return res.json();
